@@ -1,4 +1,4 @@
-# Replication files for [Chernozhukov, Newey, Quintas-Martínez and Syrgkanis (2021) "RieszNet and ForestRiesz: Automatic Debiased Machine Learning with Neural Nets and Random Forests"](https://arxiv.org/abs/2110.03031)
+Replication files for [Chernozhukov, Newey, Quintas-Martínez and Syrgkanis (2021) "RieszNet and ForestRiesz: Automatic Debiased Machine Learning with Neural Nets and Random Forests"](https://arxiv.org/abs/2110.03031)
 
 ## Main Files
 
