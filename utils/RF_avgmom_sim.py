@@ -200,16 +200,19 @@ def sim_fun(W, *, moment_fn, true_reg, true_rr, gen_y, gen_T, N_sim = 100, oracl
         dump(to_save, save)
 
     if plot:
-        nuisance_str = ("reg RMSE: {:.3f}, R2: {:.3f}, rr RMSE: {:.3f}, R2: {:.3f}\n"
-                        "IPS orthogonality: {:.3f}, DR orthogonality: {:.3f}").format(np.mean(rmse_reg), np.mean(r2_reg),
-                                                                               np.mean(rmse_rr), np.mean(r2_rr),
-                                                                               np.mean(ipsbias), np.mean(drbias))
+        #nuisance_str = ("reg RMSE: {:.3f}, R2: {:.3f}, rr RMSE: {:.3f}, R2: {:.3f}\n"
+        #                "IPS orthogonality: {:.3f}, DR orthogonality: {:.3f}").format(np.mean(rmse_reg), np.mean(r2_reg),
+        #                                                                       np.mean(rmse_rr), np.mean(r2_rr),
+        #                                                                       np.mean(ipsbias), np.mean(drbias))
         method_strs = ["{}. Bias: {:.3f}, RMSE: {:.3f}, Coverage: {:.3f}".format(method, d['bias'], d['rmse'], d['cov'])
                        for method, d in res_dict.items()]
-        plt.title("\n".join([nuisance_str] + method_strs))
+        #plt.title("\n".join([nuisance_str] + method_strs))
+        plt.title(method_strs)
+        plt.axvline(x = np.mean(truth), label='true', color='red')
         for method, d in res_dict.items():
             plt.hist(np.array(d['point']), alpha=.5, label=method)
-        plt.axvline(x = np.mean(truth), label='true', color='red')
+        plt.xlabel("estimates")
+        plt.ylabel("frequency")
         plt.legend()
         if saveplot != '':
             plt.savefig(saveplot, bbox_inches='tight')
